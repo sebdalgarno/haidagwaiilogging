@@ -63,7 +63,9 @@
 </script>
 
 <style>
-
+  a {
+  color: #374151;
+}
 </style>
 
 <header
@@ -73,13 +75,18 @@
   <Modal >
     <ModalAbout />
   </Modal>
+  <div class = "absolute top-0 right-0 p-5 text-xs">
+    <span class="text-gray-900 pr-1" >developed by </span>
+    <a href="https://www.northbeachconsulting.ca" class="hover:no-underline hover:text-blue-800" target="_blank">North Beach Consulting</a>
+  </div>
+ 
 </header>
 
 <div class="flex absolute bottom-0 w-full md:w-6/12 lg:w-6/12 xl:w-5/12 " style="height: 360px;">
   <div class="w-full bg-black bg-opacity-75 p-2" style="z-index: 1;">
-    <div class="absolute -my-10">
+    <div class="absolute ">
       {#if !secondgrowth}
-      <Button caption={'show 2nd growth'} on:second-growth={toggleSecondgrowth} />
+      <Button caption={'2nd growth'} on:second-growth={toggleSecondgrowth} />
     {:else}
       <Button caption={'hide 2nd growth'} on:second-growth={toggleSecondgrowth} />
     {/if}

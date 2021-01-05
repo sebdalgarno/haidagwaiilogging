@@ -36,14 +36,14 @@
 
 {#if outline}
   <button
-    class="border-gray-600 p-2 text-gray-500 rounded-lg text-sm leading-none block my-2"
+    class="border-gray-600 p-2 text-gray-700 rounded-lg text-xs leading-none hover:text-blue-800"
     on:click={singleYear}
     on:click={secondGrowth}>
     {caption}
   </button>
 {:else}
   <button
-    class="p-3 border-0 text-gray-600 text-sm"
+    class="p-3 border-0 text-gray-600 text-xs hover:text-blue-800"
     on:click={addYear}
     on:click={minusYear}
     on:click={openModal}>
