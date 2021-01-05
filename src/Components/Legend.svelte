@@ -2,7 +2,6 @@
   export let palette;
   export let single;
   export let secondgrowth;
-  export let map_palette;
   export let map_palette_single;
   export let map_palette_sg;
 
@@ -11,7 +10,8 @@
     { value: "20", color: palette[20] },
     { value: "40", color: palette[40] },
     { value: "60", color: palette[60] },
-    { value: ">= 80", color: palette[80] }
+    { value: ">80", color: palette[80] }
+
     // { value: 116, color: palette[116] }
   ];
 

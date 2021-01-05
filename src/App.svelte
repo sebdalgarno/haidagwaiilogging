@@ -21,10 +21,10 @@
     .bezier(base_colors)
     .scale()
     .correctLightness()
-    .colors(51);
+    .colors(80);
 
-  for (let i = 50; i < yeardiff; i++) {
-    palette.push(palette[49]);
+  for (let i = 80; i < yeardiff; i++) {
+    palette.push(palette[79]);
   }
 
   let map_palette = [];
