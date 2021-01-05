@@ -60,7 +60,7 @@
   </div>
 {/if}
 {#if secondgrowth}
-  <div class="legend">
+  <div class="legend -my-3">
     {#each legend_sg as { value, color }}
       <div>
         <span class="legendspan" style="background-color: {color}" />
