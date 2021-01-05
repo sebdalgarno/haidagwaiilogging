@@ -32,7 +32,7 @@
     map_palette.push(i);
     map_palette.push(palette[i]);
   }
-  let map_palette_single = map_palette[71];
+  let map_palette_single = map_palette[11];
 
   let map_palette_sg = ["sg", "#E6007E"];
 
