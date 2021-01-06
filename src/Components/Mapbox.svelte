@@ -16,7 +16,7 @@
     // tileset_base,
     // tileset_feature_labels,
     // tileset_parks,
-    base_colors
+    base_colors,
   } from "../consts";
 
   export let year = 1900;
@@ -51,7 +51,7 @@
     map.setFilter("logged", ["<=", "YearHarvested", year]);
   }
 
-  let paint_property_secondgrowth = year => {
+  let paint_property_secondgrowth = (year) => {
     return [
       "match",
       ["string", ["get", "SecondGrowth"]],
@@ -60,26 +60,26 @@
         "match",
         ["-", year, ["number", ["get", "YearHarvested"]]],
         ...map_palette,
-        "#AAAAAA"
-      ]
+        "#AAAAAA",
+      ],
     ];
   };
 
-  let paint_property_secondgrowth_single = year => {
+  let paint_property_secondgrowth_single = (year) => {
     return [
       "match",
       ["string", ["get", "SecondGrowth"]],
       ...map_palette_sg,
-      map_palette_single
+      map_palette_single,
     ];
   };
 
-  let paint_property = year => {
+  let paint_property = (year) => {
     return [
       "match",
       ["-", year, ["number", ["get", "YearHarvested"]]],
       ...map_palette,
-      "#AAAAAA"
+      "#AAAAAA",
     ];
   };
 
@@ -134,61 +134,6 @@
       filterAccumulate();
     }
   }
-  // function filterSingle() {
-  //   map.setFilter("logged", ["==", "year", year]);
-
-  // }
-
-  // function filterAccumulate() {
-  //   map.setFilter("logged", ["<=", "year", year]);
-  // }
-
-  // let paint_property = year => {
-  //   return [
-  //       "match",
-  //       ["-", year, ["number", ["get", "year"]]],
-  //       ...map_palette,
-  //       map_palette[1]
-  //   ];
-  // };
-
-  // let paint_property_single = year => {
-  //   return [
-  //     map_palette_single
-  //     ]
-  // };
-
-  // let paint_property_secondgrowth = year => {
-  //   return [
-  //     "match",
-  //     ["string", ["get", "SecondGrowth"]],
-  //     ...map_palette_sg,
-  //     [
-  //       "match",
-  //       ["-", year, ["number", ["get", "YearHarvested"]]],
-  //       ...map_palette,
-  //       "#AAAAAA"
-  //     ]
-  //   ];
-  // };
-
-  // function setPalette(year) {
-  //   map.setPaintProperty("logged", "fill-color", paint_property(year));
-  // }
-
-  // function setPaletteSingle(year) {
-  //   map.setPaintProperty("logged", "fill-color", paint_property_single(year));
-  // }
-
-  // function filterLoggedAreas(year, single) {
-  //   if (single) {
-  //     setPaletteSingle();
-  //     filterSingle();
-  //   } else {
-  //     setPalette(year);
-  //     filterAccumulate();
-  //   }
-  // }
 
   onMount(async () => {
     map = new mapbox.Map({
@@ -198,10 +143,10 @@
       zoom: 5,
       bearing: 10,
       attributionControl: false,
-      logoPosition: "bottom-right"
+      logoPosition: "bottom-right",
     });
 
-    map.on("load", function() {
+    map.on("load", function () {
       // map.addSource("basemap", {
       //   type: "raster",
       //   url: tileset_base
@@ -219,7 +164,7 @@
       map.addSource("logged", {
         type: "vector",
         url: tileset_logging,
-        promoteId: "id"
+        promoteId: "YearHarvested",
       });
       map.addLayer({
         id: "logged_simp",
@@ -228,14 +173,13 @@
         type: "fill",
         filter: ["==", "YearHarvested", year],
         paint: {
-          "fill-color": [
-            "match",
-            ["-", year, ["number", ["get", "YearHarvested"]]],
-            ...map_palette,
-            "#AAAAAA"
-          ]
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            0.5,
+            1,
+          ],
         },
-        "fill-opacity": fill_opacity
       });
       map.addLayer({
         id: "logged",
@@ -244,34 +188,33 @@
         type: "fill",
         filter: ["==", "YearHarvested", year],
         paint: {
-          "fill-color": [
-            "match",
-            ["-", year, ["number", ["get", "YearHarvested"]]],
-            ...map_palette,
-            "#AAAAAA"
-          ]
+          "fill-opacity": [
+            "case",
+            ["boolean", ["feature-state", "hover"], false],
+            0.5,
+            1,
+          ],
         },
-        "fill-opacity": fill_opacity
       });
-     
-//       map.addSource("logged", {
-//         type: "vector",
-//         url: tileset_logging,
-//         promoteId: "id"
-//       });
-//       map.addLayer({
-//         id: "logged",
-//         source: "logged",
-//         "source-layer": "logging",
-//         type: "fill",
-//         filter: ["==", "year", year],
-//         paint: {
-//           'fill-opacity': [
-// 'case',
-// ['boolean', ['feature-state', 'hover'], false],
-// 0.5,
-// 1]}
-//       });
+
+      //       map.addSource("logged", {
+      //         type: "vector",
+      //         url: tileset_logging,
+      //         promoteId: "id"
+      //       });
+      //       map.addLayer({
+      //         id: "logged",
+      //         source: "logged",
+      //         "source-layer": "logging",
+      //         type: "fill",
+      //         filter: ["==", "year", year],
+      //         paint: {
+      //           'fill-opacity': [
+      // 'case',
+      // ['boolean', ['feature-state', 'hover'], false],
+      // 0.5,
+      // 1]}
+      //       });
       map.addControl(new mapbox.AttributionControl(), "bottom-right");
       map.fitBounds(bounds);
       done = true;
@@ -279,60 +222,103 @@
 
     var popup = new mapbox.Popup({
       closeButton: false,
-      closeOnClick: false
+      closeOnClick: false,
     });
 
-        /////// hover popups for logging areas
-    map.on("mousemove", "logged", function(e) {
-      // Change the cursor style as a UI indicator.
+    /////// hover popups for logging areas
+    map.on("mousemove", "logged", function (e) {
       map.getCanvas().style.cursor = "pointer";
 
       var coordinates = e.lngLat;
-
       var description = `
-      <p class='inline-block'>${e.features[0].properties.description}</p>`;
-      // Ensure that if the map is zoomed out such that multiple
-      // copies of the feature are visible, the popup appears
-      // over the copy being pointed to.
-      // while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-      //   coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-      // }
-
-      // Populate the popup and set its coordinates
-      // based on the feature found.
-      popup
-        .setLngLat(coordinates)
-        .setHTML(description)
-        .addTo(map);
+      <p class='inline-block font-bold'> logged in ${e.features[0].properties.YearHarvested}</p>`;
+  
+      popup.setLngLat(coordinates).setHTML(description).addTo(map);
     });
 
-    map.on('mousemove', 'logged', function (e) {
-if (e.features.length > 0) {
-if (hoveredStateId) {
-map.setFeatureState(
-{ source: 'logged', id: hoveredStateId, sourceLayer: 'logging' },
-{ hover: false }
-);
-}
-hoveredStateId = e.features[0].id;
-map.setFeatureState(
-{ source: 'logged', id: hoveredStateId, sourceLayer: 'logging'  },
-{ hover: true }
-);
-}
-});
+    // map.on("mousemove", "logged_simp", function (e) {
+    //   map.getCanvas().style.cursor = "pointer";
 
-    map.on("mouseleave", "logged", function() {
-      map.getCanvas().style.cursor = "";
-      popup.remove();
-      if (hoveredStateId) {
-map.setFeatureState(
-{ source: 'logged', id: hoveredStateId, sourceLayer: 'logging'  },
-{ hover: false }
-);
-}
-hoveredStateId = null;
-    });
+    //   var coordinates = e.lngLat;
+    //   var description = `
+    //   <p class='inline-block font-bold'> logged in ${e.features[0].properties.YearHarvested}</p>`;
+  
+    //   popup.setLngLat(coordinates).setHTML(description).addTo(map);
+    // });
+
+   
+
+    // map.on("mousemove", "logged", function (e) {
+    //   if (e.features.length > 0) {
+    //     if (hoveredStateId) {
+    //       map.setFeatureState(
+    //         {
+    //           source: "logged",
+    //           id: hoveredStateId,
+    //           sourceLayer: source_layer[0],
+    //         },
+    //         { hover: false }
+    //       );
+    //     }
+    //     hoveredStateId = e.features[0].id;
+    //     map.setFeatureState(
+    //       {
+    //         source: "logged",
+    //         id: hoveredStateId,
+    //         sourceLayer: source_layer[0],
+    //       },
+    //       { hover: true }
+    //     );
+    //   }
+    // });
+
+    // map.on("mousemove", "logged_simp", function (e) {
+    //   if (e.features.length > 0) {
+    //     if (hoveredStateId) {
+    //       map.setFeatureState(
+    //         {
+    //           source: "logged",
+    //           id: hoveredStateId,
+    //           sourceLayer: source_layer[0],
+    //         },
+    //         { hover: false }
+    //       );
+    //     }
+    //     hoveredStateId = e.features[0].id;
+    //     map.setFeatureState(
+    //       {
+    //         source: "logged",
+    //         id: hoveredStateId,
+    //         sourceLayer: source_layer[0],
+    //       },
+    //       { hover: true }
+    //     );
+    //   }
+    // });
+
+    // map.on("mouseleave", "logged", function () {
+    //   map.getCanvas().style.cursor = "";
+    //   popup.remove();
+    //   if (hoveredStateId) {
+    //     map.setFeatureState(
+    //       { source: "logged", id: hoveredStateId, sourceLayer: source_layer[0] },
+    //       { hover: false }
+    //     );
+    //   }
+    //   hoveredStateId = null;
+    // });
+
+    // map.on("mouseleave", "logged_simp", function () {
+    //   map.getCanvas().style.cursor = "";
+    //   popup.remove();
+    //   if (hoveredStateId) {
+    //     map.setFeatureState(
+    //       { source: "logged", id: hoveredStateId, sourceLayer: source_layer[0] },
+    //       { hover: false }
+    //     );
+    //   }
+    //   hoveredStateId = null;
+    // });
   });
 </script>
 

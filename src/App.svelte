@@ -77,7 +77,7 @@
   </Modal>
   <div class = "absolute top-0 right-0 p-5 text-xs">
     <span class="text-gray-900 pr-1" >developed by </span>
-    <a href="https://www.northbeachconsulting.ca" class="hover:no-underline hover:text-blue-800" target="_blank">North Beach Consulting</a>
+    <a href="https://www.northbeachconsulting.ca" class="hover:no-underline hover:text-blue-600" target="_blank">North Beach Consulting</a>
   </div>
  
 </header>
