@@ -71,9 +71,11 @@
   class="invisible absolute py-1 w-full bg-black text-gray-400 text-1.5 p-5
   bg-opacity-75 sm:visible" style="z-index: 2;">
   A History of Logging in Haida Gwaii 
-  <Modal >
-    <ModalAbout />
-  </Modal>
+  <span class="visible absolute sm:static">
+    <Modal >
+      <ModalAbout />
+    </Modal>
+  </span>
   <div class = "absolute top-0 right-0 p-5 text-xs">
     <span class="text-gray-900 pr-1" >developed by </span>
     <a href="https://www.northbeachconsulting.ca" class="hover:no-underline hover:text-blue-600" target="_blank">North Beach Consulting</a>
@@ -114,7 +116,7 @@
   </div>
 </div>
 
-<div class=" absolute right-0 sm:my-10  p-0 md:p-2 rounded-lg bg-black bg-opacity-75 text-gray-400" style="z-index: 1; ">
+<div class=" absolute left-0 sm:my-10  p-0 md:p-2 rounded-lg bg-black bg-opacity-75 text-gray-400" style="z-index: 1; ">
   <Legend {palette} {single} {secondgrowth} {map_palette_single} {map_palette_sg}/>
 </div>
 
