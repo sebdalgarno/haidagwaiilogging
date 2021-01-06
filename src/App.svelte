@@ -78,12 +78,11 @@
     <span class="text-gray-900 pr-1" >developed by </span>
     <a href="https://www.northbeachconsulting.ca" class="hover:no-underline hover:text-blue-600" target="_blank">North Beach Consulting</a>
   </div>
- 
 </header>
 
-<div class="flex absolute bottom-0 w-full md:w-6/12 lg:w-6/12 xl:w-5/12 " style="height: 40%;">
+<div class="flex absolute bottom-0 w-full md:w-6/12 lg:w-6/12 xl:w-5/12" style="height: 40%;">
   <div class="w-full bg-black bg-opacity-75 p-2" style="z-index: 1;">
-    <div class="absolute ">
+    <div class="absolute invisible sm:visible ">
       {#if !secondgrowth}
       <Button caption={'2nd growth'} on:second-growth={toggleSecondgrowth} />
     {:else}
@@ -111,11 +110,8 @@
     <div >
       <Chart {year} {single} {secondgrowth} {palette} {map_palette} {map_palette_single} {map_palette_sg}/>
       <!-- <D3Chart /> -->
-
     </div>
   </div>
-
-  
 </div>
 
 <div class=" absolute invisible md:visible p-0 md:p-2 rounded-lg bg-black bg-opacity-75 text-gray-400" style="z-index: 1; top: 75px; right: 10px;">
