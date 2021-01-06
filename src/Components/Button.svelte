@@ -36,7 +36,7 @@
 
 {#if outline}
   <button
-    class="border-gray-700 p-2 text-gray-600 rounded-lg text-xs leading-none hover:text-blue-600"
+    class="border-gray-700 p-2 text-gray-600 rounded-lg text-xs leading-none hover:text-blue-600 my-1"
     on:click={singleYear}
     on:click={secondGrowth}>
     {caption}

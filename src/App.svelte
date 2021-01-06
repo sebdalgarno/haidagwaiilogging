@@ -71,11 +71,9 @@
   class="invisible absolute py-1 w-full bg-black text-gray-400 text-1.5 p-5
   bg-opacity-75 sm:visible" style="z-index: 2;">
   A History of Logging in Haida Gwaii 
-  <span class="visible absolute sm:static">
     <Modal >
       <ModalAbout />
     </Modal>
-  </span>
   <div class = "absolute top-0 right-0 p-5 text-xs">
     <span class="text-gray-900 pr-1" >developed by </span>
     <a href="https://www.northbeachconsulting.ca" class="hover:no-underline hover:text-blue-600" target="_blank">North Beach Consulting</a>
@@ -84,19 +82,7 @@
 
 <div class="flex absolute bottom-0 w-full md:w-6/12 lg:w-6/12 xl:w-5/12" style="height: 40%;">
   <div class="w-full bg-black bg-opacity-75 p-2" style="z-index: 1;">
-    <div class="absolute invisible sm:visible ">
-      {#if !secondgrowth}
-      <Button caption={'2nd growth'} on:second-growth={toggleSecondgrowth} />
-    {:else}
-      <Button caption={'hide 2nd growth'} on:second-growth={toggleSecondgrowth} />
-    {/if}
-      {#if !single}
-        <Button caption={'by year'} on:single-year={toggleSingle} />
-      {:else}
-        <Button caption={'all years'} on:single-year={toggleSingle} />
-      {/if}
-    
-    </div>
+   
     <div class="text-center flex justify-center">
       <Button outline={false} caption={'-'} on:minus-year={minusYear} />
       <div class="inline-block">
@@ -109,7 +95,7 @@
       <Slider class="mdc-slider" bind:value={year} min={1900} max={2017} step={1} discrete />
     </div>
 
-    <div >
+    <div>
       <Chart {year} {single} {secondgrowth} {palette} {map_palette} {map_palette_single} {map_palette_sg}/>
       <!-- <D3Chart /> -->
     </div>
@@ -118,6 +104,19 @@
 
 <div class=" absolute left-0 sm:my-10  p-0 md:p-2 rounded-lg bg-black bg-opacity-75 text-gray-400" style="z-index: 1; ">
   <Legend {palette} {single} {secondgrowth} {map_palette_single} {map_palette_sg}/>
+  <div class="absolute invisible sm:visible my-1">
+    {#if !secondgrowth}
+    <Button caption={'2nd growth'} on:second-growth={toggleSecondgrowth} />
+  {:else}
+    <Button caption={'hide 2nd growth'} on:second-growth={toggleSecondgrowth} />
+  {/if}
+    {#if !single}
+      <Button caption={'by year'} on:single-year={toggleSingle} />
+    {:else}
+      <Button caption={'all years'} on:single-year={toggleSingle} />
+    {/if}
+  
+  </div>
 </div>
 
 
