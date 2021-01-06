@@ -114,7 +114,7 @@
   </div>
 </div>
 
-<div class=" absolute invisible md:visible p-0 md:p-2 rounded-lg bg-black bg-opacity-75 text-gray-400" style="z-index: 1; top: 75px; right: 10px;">
+<div class=" absolute right-0 sm:my-10  p-0 md:p-2 rounded-lg bg-black bg-opacity-75 text-gray-400" style="z-index: 1; ">
   <Legend {palette} {single} {secondgrowth} {map_palette_single} {map_palette_sg}/>
 </div>
 
