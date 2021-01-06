@@ -7,6 +7,12 @@
   const { open } = getContext("simple-modal");
   //   export let message;
 
+  open(About, {
+      tips: tips,
+      data: data},
+      {styleWindow: {'z-index': 100}}
+    );
+
   const showAbout = () => {
     open(About, {
       tips: tips,

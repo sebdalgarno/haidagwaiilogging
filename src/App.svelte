@@ -3,7 +3,6 @@
   import Legend from "./Components/Legend.svelte";
   import Button from "./Components/Button.svelte";
   import Slider from "@smui/slider";
-  import D3Chart from "./Components/d3Chart.svelte";
   import Chart from "./Components/Barchart.svelte";
   import Modal from "svelte-simple-modal";
   import ModalAbout from "./Components/ModalAbout.svelte";
@@ -120,7 +119,7 @@
 </div>
 
 <div class=" absolute invisible md:visible p-0 md:p-2 rounded-lg bg-black bg-opacity-75 text-gray-400" style="z-index: 1; top: 75px; right: 10px;">
-  <Legend {palette} {single} {secondgrowth} {map_palette} {map_palette_single} {map_palette_sg}/>
+  <Legend {palette} {single} {secondgrowth} {map_palette_single} {map_palette_sg}/>
 </div>
 
 
