@@ -81,7 +81,7 @@
  
 </header>
 
-<div class="flex absolute bottom-0 w-full md:w-6/12 lg:w-6/12 xl:w-5/12 " style="height: 360px;">
+<div class="flex absolute bottom-0 w-full md:w-6/12 lg:w-6/12 xl:w-5/12 " style="height: 40%;">
   <div class="w-full bg-black bg-opacity-75 p-2" style="z-index: 1;">
     <div class="absolute ">
       {#if !secondgrowth}

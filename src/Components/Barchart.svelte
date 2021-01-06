@@ -70,17 +70,7 @@
 </script>
 
 <style>
-  .chart {
-    padding: 1em;
-    position: absolute;
-    width: 78%;
-    height: 40%;
-    /* min-height: 150px; */
-    /* overflow: scroll; */
-    text-align: center;
-    margin: 0 auto;
-  }
-
+  
   .background,
   .foreground {
     position: absolute;
@@ -122,11 +112,6 @@
     text-align: center;
   }
 
-  .background .x.label {
-    color: white;
-    font-size: 10px;
-  }
-
   .foreground .x.label {
     bottom: -22px;
   }
@@ -150,43 +135,22 @@
     /* opacity: 0.1; */
   }
 
-  .highlight {
-    background-color: #ff3e00;
-  }
-
-  .annotation {
-    position: absolute;
-    white-space: nowrap;
-    bottom: 1em;
-    line-height: 1.2;
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 0.2em 0.4em;
-    border-radius: 2px;
-  }
-
-  .annotation-point {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #ff3e00;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .annotation strong {
-    display: block;
-    font-size: 20px;
-  }
-
-  .annotation span {
-    display: block;
-    font-size: 14px;
-  }
 </style>
 
 <!-- <svelte:window on:resize={handle_resize} /> -->
 
-<div class="chart " bind:clientWidth={w} bind:this={el}>
+<!-- .chart {
+  padding: 1em;
+  position: absolute;
+  width: 70%;
+  height: 40%;
+  /* min-height: 150px; */
+  /* overflow: scroll; */
+  text-align: center;
+  margin: 0 auto;
+} -->
+
+<div class="p-4 absolute w-3/4 h-2/5 text-center my-0 mx-auto" style="height: 40%" bind:clientWidth={w} bind:this={el}>
   <div class="background">
     <Pancake.Chart {x1} {x2} y1={0} y2={max}>
       <Pancake.Grid horizontal count={5} let:value let:first>
