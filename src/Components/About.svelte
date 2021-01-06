@@ -1,5 +1,4 @@
 <script>
-  export let attribution;
   export let data;
   export let tips;
 </script>
@@ -21,11 +20,5 @@
   <p class="title">Data</p>
   <p class="text">{data}</p>
   <p class="title">Attribution</p>
-  <p class="text">{attribution}</p>
-  <img
-    class="p-2"
-    src="img/COMMONSbcLogo.jpg"
-    alt="logo"
-    width="100"
-    height="100" />
+  <p class="text">App developed by Seb Dalgarno (<a href="https://www.northbeachconsulting.ca" target="_blank">North Beach Consulting</a>). It is a new implementation of John Broadhead's original animation and much of the original design is mimicked.</p>
 </div>
