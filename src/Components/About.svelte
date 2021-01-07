@@ -17,8 +17,8 @@
 <div class="z-50">
   <p class="title">Tips for using the app</p>
   <p class="text">{tips}</p>
-  <p class="title">Data</p>
+  <p class="title">Credit</p>
   <p class="text">{data}</p>
-  <p class="title">Attribution</p>
-  <p class="text">App developed by Seb Dalgarno (<a href="https://www.northbeachconsulting.ca" target="_blank">North Beach Consulting</a>). It is a new implementation of John Broadhead's original animation and much of the original design is mimicked.</p>
+  <br>
+  <p class="text">This app was developed by Seb Dalgarno (<a href="https://www.northbeachconsulting.ca" target="_blank">North Beach Consulting</a>). It is a new implementation of John Broadhead's original animation and much of the original design is mimicked. Contact <a href="mailto:seb@northbeachconsulting.ca">Seb Dalgarno</a> for more information.</p>
 </div>

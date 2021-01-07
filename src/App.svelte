@@ -70,7 +70,7 @@
 <header
   class="invisible absolute py-1 w-full bg-black text-gray-400 text-1.5 p-5
   bg-opacity-75 sm:visible" style="z-index: 2;">
-  A History of Logging in Haida Gwaii 
+  120 years of logging in Haida Gwaii 
     <Modal >
       <ModalAbout />
     </Modal>
@@ -97,7 +97,6 @@
 
     <div>
       <Chart {year} {single} {secondgrowth} {palette} {map_palette} {map_palette_single} {map_palette_sg}/>
-      <!-- <D3Chart /> -->
     </div>
   </div>
 </div>
