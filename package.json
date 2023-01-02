@@ -33,7 +33,7 @@
     "node-sass": "^4.14.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-postcss": "^3.1.8",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-serve": "^1.0.4",
     "sirv-cli": "^1.0.0",
     "svelte-preprocess": "^4.2.1",
